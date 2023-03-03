@@ -1,0 +1,25 @@
+.products-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+}
+.products-container section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 2px 5px 1px gray;
+  flex: 1;
+  min-width: 200px;
+  gap: 20px;
+}
+.products-container button {
+  padding: 15px;
+  background-color: var(--button-bg);
+  border-radius: 7px;
+  color: white;
+  border-color: var(--primary);
+}
+
+.products-container button:hover {
+  background-color: var(--primary);
+}
