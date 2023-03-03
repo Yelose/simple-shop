@@ -59,3 +59,6 @@ Now it should work, if you have problems with the images, add a . before the /.
 <img src="./vite.svg" className="logo" alt="Vite logo" />
 
 ```
+
+Para ver el tutorial en español
+https://www.youtube.com/watch?v=e3SV6tYztz0
