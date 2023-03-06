@@ -3,6 +3,14 @@
 .App {
   width: 100%;
 }
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+}
+.landing-page > main {
+  display: flex;
+}
 .nav-bar {
   display: flex;
   background-color: var(--primary);
@@ -13,13 +21,4 @@
   padding: 15px 20px;
   height: 100%;
   color: hsla(0, 0%, 100%, 0.9);
-}
-
-.App > main {
-  height: 100%;
-  display: flex;
-}
-
-.App > main > div {
-  flex: 1;
 }
