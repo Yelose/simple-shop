@@ -9,16 +9,18 @@ function App() {
   return (
     <div className="App">
       <header className="nav-bar">
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/home">Home</NavLink>
         <NavLink to="/blog">Blog</NavLink>
         <NavLink to="/shop">Shop</NavLink>
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="*" element={<Error404 />} />
+          <Route path="/simple-shop" element={<Home />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="*" element={<Error404 />} />
+          </Route>
         </Routes>
         <aside>
           <h2>Sidebar</h2>
