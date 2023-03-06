@@ -1,9 +1,9 @@
-export default function Product({ name, description }) {
+export default function Product({ name, description, addProductToCart, id }) {
   return (
     <section>
       <h3>{name}</h3>
       <p>{description}</p>
-      <button>Add to chart</button>
+      <button onClick={() => addProductToCart(id, name)}>Add to chart</button>
     </section>
   );
 }
