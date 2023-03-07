@@ -9,18 +9,68 @@ import { products } from "./data/products";
 import { useState } from "react";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState([
-    { id: 1, amount: 2, name: "Product 1" },
-    { id: 2, amount: 5, name: "Product 2" },
-    { id: 3, amount: 7, name: "Product 3" },
-  ]);
-  const addProductToCart = (productId, productName) => {
-    const newShoppingCart = [...shoppingCart];
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const [cartTotalProductsAmount, setCartTotalAmount] = useState(0);
+
+  const addProductToCart = (id, name) => {
+    const productExists = shoppingCart.some((p) => p.id === id);
+    if (!productExists) {
+      setShoppingCart([...shoppingCart, { id, name, amount: 1 }]);
+      setCartTotalAmount(cartTotalProductsAmount + 1);
+    } else {
+      setShoppingCart(
+        shoppingCart.map((product) => {
+          if (product.id === id) {
+            product.amount = product.amount + 1;
+          }
+          return product;
+        })
+      );
+      setCartTotalAmount(cartTotalProductsAmount + 1);
+    }
   };
+
+  const removeProductFromCart = (id) => {
+    const productIndex = shoppingCart.findIndex((p) => p.id === id);
+    const product = shoppingCart[productIndex];
+
+    let modifiedCart = shoppingCart;
+
+    if (product.amount > 1) {
+      modifiedCart = [
+        ...shoppingCart.slice(0, productIndex),
+        {
+          ...product,
+          amount: product.amount - 1,
+        },
+        ...shoppingCart.slice(productIndex + 1),
+      ];
+    }
+
+    if (product.amount === 1) {
+      modifiedCart = [
+        ...shoppingCart.slice(0, productIndex),
+        ...shoppingCart.slice(productIndex + 1),
+      ];
+    }
+
+    setShoppingCart(modifiedCart);
+    setCartTotalAmount(cartTotalProductsAmount - 1);
+  };
+
   return (
     <div className="App">
       <Routes>
-        <Route path="simple-shop" element={<LandingPage cart={shoppingCart} />}>
+        <Route
+          path="simple-shop"
+          element={
+            <LandingPage
+              cart={shoppingCart}
+              total={cartTotalProductsAmount}
+              removeProduct={removeProductFromCart}
+            />
+          }
+        >
           <Route index element={<Home />} />
           <Route path="blog" element={<Blog />} />
           <Route

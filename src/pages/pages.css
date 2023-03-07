@@ -6,3 +6,14 @@
   gap: 20px;
   flex: 1;
 }
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+}
+.landing-page > main {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+}

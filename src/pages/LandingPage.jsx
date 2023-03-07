@@ -1,19 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
-import ShoppingCart from "../components/cart/ShoppingCart";
+import { useState } from "react";
+import Navbar from "../components/header/NavBar";
 
-export default function LandingPage({ cart }) {
+export default function LandingPage({ cart, total, removeProduct }) {
   return (
     <div className="landing-page">
-      <header className="nav-bar">
-        <NavLink to="./">Home</NavLink>
-        <NavLink to="./blog">Blog</NavLink>
-        <NavLink to="./shop">Shop</NavLink>
-      </header>
+      <Navbar cart={cart} total={total} removeProduct={removeProduct} />
       <main>
         <Outlet />
-        <aside>
-          <ShoppingCart cart={cart} />
-        </aside>
       </main>
     </div>
   );

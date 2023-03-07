@@ -1,0 +1,22 @@
+.nav-bar {
+  display: flex;
+  background-color: var(--primary);
+  justify-content: space-between;
+  height: 55px;
+  position: relative;
+}
+.nav-bar > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.nav-bar a {
+  padding: 15px 3vw;
+  height: 100%;
+  color: hsla(0, 0%, 100%, 0.9);
+}
+
+.nav-bar aside {
+  display: flex;
+  justify-content: flex-end;
+}
